@@ -1,20 +1,12 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "h256",
+  "version": "0.0.1",
+  "description": "h256 video converter",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "GitHub",
+  "author": "Danny Ruchtie",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^2.0.0"

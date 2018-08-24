@@ -1,9 +1,38 @@
+body {
+	color:rgb(127,127,127);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
 #holder{
+	position: absolute;
+	display: block;
+	top:0;
+	left:0;	
 	width: 100vw;
 	height: 100vh;
 	padding: 0;
 	margin: 0;
 	line-height: 100vh;
 	text-align: center;
-	
+}
+
+#progress{
+	position: absolute;
+	display: block;
+	top:0;
+	left:0;
+	width: 0%;
+	height: 100vh;
+	background: rgba(0,0,0,.1);
+	line-height: 100vh;
+	text-align: center;	
+	transition: width .5s ease-out;
+
+}
+
+.percent{
+	width: 100vw;
+	height: 100vh;	
+	text-align: center;	
 }
