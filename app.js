@@ -4,15 +4,58 @@ var command = ffmpeg();
 
 
 
+
 function convert(){
-alert('1');	
+	var encoding = document.getElementById('encoding');
+    var encoding = document.getElementById('type');
+    var encoding = document.getElementById('resolution');    
+
+
+    function getSelectedOption(encoding) {
+        var opt;
+        for ( var i = 0, len = encoding.options.length; i < len; i++ ) {
+            opt = encoding.options[i];
+            if ( opt.selected === true ) {
+                break;
+            }
+        }
+        return opt;
+    }
+    
+    function getSelectedOption(type) {
+        var opt;
+        for ( var i = 0, len = type.options.length; i < len; i++ ) {
+            opt = type.options[i];
+            if ( opt.selected === true ) {
+                break;
+            }
+        }
+        return opt;
+    }   
+    
+
+    function getSelectedOption(resolution) {
+        var opt;
+        for ( var i = 0, len = resolution.options.length; i < len; i++ ) {
+            opt = resolution.options[i];
+            if ( opt.selected === true ) {
+                break;
+            }
+        }
+        return opt;
+    }        
+
+    
+  //encoding.value + type.value + resolution.value
+
+
 	
 ffmpeg(f.path)
 		
 		  .videoCodec('libx265')	
-		  .size('?x1080')
+		  .size('?x'+resolution.value)
 		  .videoBitrate(400000)
-		  .outputOptions(['-strict -2' ,'-tag:v hvc1', '-preset medium', '-profile:v main10'])
+		  .outputOptions(['-strict -2' ,'-tag:v hvc1', '-preset'+encoding.value, '-profile:v main10'])
 		  .output( dir+'-converted.mp4')
 	
 
