@@ -1,27 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html style="background: #1F1F1F">
   <head>
     <meta charset="UTF-8">
     <title>h265</title>
     <link rel="stylesheet" href="css/screen.css">
     
+    
+    
   </head>
   <body>
     <script>
-      require('./renderer.js')
-      require('./convert.js')
-      //require('./h265.js')
+        require('./app.js')
     </script>
-
-
-
     
-    <div id="holder">
-    	<div id="progress"></div>
-    	<span class="percent">Drag your file here</span>
-  	</div>
-  
+	<script>
+	function convert() {
+alert('test')
+/*
+ffmpeg(f.path)
+		
+	.videoCodec('libx265')	
+	.size('?x1080')
+	.videoBitrate(400000)
+	.outputOptions(['-strict -2' ,'-tag:v hvc1', '-preset medium', '-profile:v main10'])
+	.output( dir+'-converted.mp4')
+		  
+	.on('progress', function(progress) {
+	var percent = Math.round(progress.percent);
+	document.getElementsByClassName("convert")[0].innerHTML='Processing: ' + percent + '%';
+	})
+	
+	.on('end', function() {})
+	.run();
+*/
 
+}
+
+document.querySelector('#cbt').addEventListener('click', convert);
+</script>	    
+    
+
+
+
+
+
+<div class="container">  
+	<div id="video">
+		
+		<div class="import-area">
+		<div class="import center"></div>
+		Drag video here 
+		</div>		
+	
+	</div>
+	
+	
+	
+	<div id="settings">
+		
+		
+		<label for="encoding">Encoding</label> 	
+		<select id="encoding">
+			<option value="ultrafast">Ultrafast</option>
+			<option value="fast">Fast</option>
+			<option value="normal"  selected="selected">Good Quality</option>
+			<option value="slow">Better Quality</option>
+			<option value="veryslow">Best Quality</option>
+		</select>
+
+		<label for="type">Video Type</label>
+		<select id="type">	
+			<option value="film" selected="selected">Film</option>
+			<option value="animation">Animation</option>
+			<option value="grain">Old Grainy Film</option>
+		</select>	
+		
+		<label for="resolution">Resolution</label>
+		<select id="resolution"> 	
+			<option value="480">480</option>
+			<option value="720">720</option>
+			<option value="1080" selected="selected">1080</option>
+			<option value="2160">2160</option>		
+		</select>		
+		
+		
+	</div><!-- settings -->
+	
+	
+	<div id="chapter">
+		chapter
+	</div><!-- chapter -->	
+	
+	<div id="actionbar">
+		<button class="right" id="cbt" >Convert</button>
+	</div>
+	
+	
+</div><!-- container -->	
 
     
     

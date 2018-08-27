@@ -1,38 +1,133 @@
-body {
+@import "reset.css" screen;
+
+
+:root {
+    --tintcolor: #5D57F5;  /* var(--tintcolor) */
+}
+
+
+html, body{
 	color:rgb(127,127,127);
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 0;
+	background: #171717;
+	-webkit-app-region:drag;
+	backdrop-filter: blur(10px);
 }
 
 
-#holder{
-	position: absolute;
-	display: block;
-	top:0;
-	left:0;	
-	width: 100vw;
-	height: 100vh;
-	padding: 0;
-	margin: 0;
-	line-height: 100vh;
+.container{
+background-color: #171717;	
+display: grid;
+width: 100vw;
+height: 100vh;
+padding: 0;
+margin: 0;
+grid-template-columns:  auto  14rem;
+grid-template-rows:1fr 0 2.5rem;	 /* 20rem  1fr 2.5rem */
+grid-template-areas: 
+    "video settings  "
+    "chapter settings"
+    "actionbar actionbar"
+}
+
+#video{ 
+	display: grid;
+	grid-template-columns:1fr;
+	grid-template-rows:1fr;	
+	background: #171717;
+	grid-area: video;	
+	vertical-align: middle;
 	text-align: center;
+	justify-items: center;	
+	padding: 1rem;
+	margin-top: 1.25rem;
 }
 
-#progress{
-	position: absolute;
+.import-area{
+	justify-items: center;
+	align-self: center;
+}
+
+
+#video .import{
+	width: 3rem;
+	height: 3rem;
 	display: block;
-	top:0;
-	left:0;
-	width: 0%;
-	height: 100vh;
-	background: rgba(0,0,0,.1);
-	line-height: 100vh;
+	margin: 1rem auto;
+	padding: 2rem;
+	border-radius:.5rem;
+	vertical-align: middle;
+	text-align: center;
+	background:#222222 url("../assets/arrow.svg") center center no-repeat;
+	background-size: 40px;
+}
+
+
+#video video{
+	width:100%;
+	height: 100%;
 	text-align: center;	
-	transition: width .5s ease-out;
 
 }
 
-.percent{
-	width: 100vw;
-	height: 100vh;	
-	text-align: center;	
+
+#settings{
+	background: #111111;
+	grid-area: settings;
+	border-left: 1px solid rgba(2, 2, 2, 0.4);
+	
+}
+#chapter{
+	background:#1F1F1F;
+	grid-area: chapter;
+}
+
+#actionbar{
+	background: #1F1F1F;
+	grid-area: actionbar;
+	border-top: 1px solid rgba(2, 2, 2, 0.4);
+}
+
+
+
+#settings {
+	padding: 1rem; 
+	font-size: 12px;
+}
+
+
+#settings label{
+	font-size: 12px;
+	color:#fff;
+	width: 4.5rem;
+	line-height: 30px;
+	float: left;
+	display: block;
+}
+
+#settings select{
+	font-size: 12px;	
+	color:#fff;
+	min-width: 7.25rem;
+	float: left;
+	border-radius: .25rem;
+	border: 1px solid rgba(2, 2, 2, 0.6);
+	background:#222222 url(../assets/select-bg.svg) right center no-repeat;
+	text-transform: capitalize;
+	background-size:20px;
+}
+
+
+#actionbar button{
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 2px;
+	line-height: .6rem;
+	margin: .5rem;
+	padding-left:1rem;
+	padding-right:1rem;
+	color:#fff;
+	border:1px solid var(--tintcolor);
+	background-color:  var(--tintcolor);
 }
