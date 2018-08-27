@@ -4,44 +4,8 @@
     <meta charset="UTF-8">
     <title>h265</title>
     <link rel="stylesheet" href="css/screen.css">
-    
-    
-    
-  </head>
-  <body>
-    <script>
-        require('./app.js')
-    </script>
-    
-	<script>
-	function convert() {
-alert('test')
-/*
-ffmpeg(f.path)
-		
-	.videoCodec('libx265')	
-	.size('?x1080')
-	.videoBitrate(400000)
-	.outputOptions(['-strict -2' ,'-tag:v hvc1', '-preset medium', '-profile:v main10'])
-	.output( dir+'-converted.mp4')
-		  
-	.on('progress', function(progress) {
-	var percent = Math.round(progress.percent);
-	document.getElementsByClassName("convert")[0].innerHTML='Processing: ' + percent + '%';
-	})
-	
-	.on('end', function() {})
-	.run();
-*/
-
-}
-
-document.querySelector('#cbt').addEventListener('click', convert);
-</script>	    
-    
-
-
-
+</head>
+<body>
 
 
 <div class="container">  
@@ -99,7 +63,10 @@ document.querySelector('#cbt').addEventListener('click', convert);
 </div><!-- container -->	
 
     
+<script>
+    require('./app.js')
+</script>
+        
     
-    
-  </body>
+</body>
 </html>
