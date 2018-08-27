@@ -2,13 +2,47 @@ var fs = require('fs');
 var ffmpeg = require('fluent-ffmpeg');
 var command = ffmpeg();
 
-
+document.getElementById("cbt").addEventListener('click', convert);
 
 
 function convert(){
 	var encoding = document.getElementById('encoding');
-    var encoding = document.getElementById('type');
-    var encoding = document.getElementById('resolution');    
+    var type = document.getElementById('type');
+    var resolution = document.getElementById('resolution');  
+    
+ var vids = document.getElementsByTagName('source') 
+// vids is an HTMLCollection
+for( var i = 0; i < vids.length; i++ ){ 
+    var videopath = vids.item(i).src;
+}
+
+var dir = videopath.substring(0, videopath.lastIndexOf("."));
+
+  
+     
+ ffmpeg(videopath)
+		  .videoCodec('libx265')	
+		  .size('?x' + resolution.value)
+		  .videoBitrate(400000)
+		  .outputOptions(['-strict -2' ,'-tag:v hvc1', '-tune ' + type.value, '-preset ' + encoding.value, '-profile:v main10'])
+		  .output(dir + '-h265.mp4')
+	
+
+		  .on('progress', function(progress) {
+	var percent = Math.round(progress.percent);
+
+
+	})
+	
+  .on('end', function() {
+
+  })
+  
+.run();
+  
+
+};
+     
 
 
     function getSelectedOption(encoding) {
@@ -49,33 +83,6 @@ function convert(){
   //encoding.value + type.value + resolution.value
 
 
-	
-ffmpeg(f.path)
-		
-		  .videoCodec('libx265')	
-		  .size('?x'+resolution.value)
-		  .videoBitrate(400000)
-		  .outputOptions(['-strict -2' ,'-tag:v hvc1', '-preset'+encoding.value, '-profile:v main10'])
-		  .output( dir+'-converted.mp4')
-	
-
-.on('progress', function(progress) {
-	var percent = Math.round(progress.percent);
-
-
-	})
-	
-  .on('end', function() {
-  	event.dataTransfer.dropEffect = 'link';
-  })
-  
-.run();
-  
-alert('1');	
-};
-
-document.getElementById("cbt").addEventListener('click', convert);
-
 
 
 
@@ -87,7 +94,7 @@ document.addEventListener('drop', function (e) {
       for (let f of e.dataTransfer.files) {
 
 	  var path = f.path;
-	  var dir = path.substring(0, path.lastIndexOf("."));
+//	 var dir = path.substring(0, path.lastIndexOf("."));
 	  
 	document.getElementById("video").innerHTML= '<video controls><source src="'+path+'"></video>';	
 	event.dataTransfer.dropEffect = 'none';
